@@ -28,9 +28,7 @@ import java.time.LocalDateTime;
 @Value
 @Builder
 public class ApiResponse<T> {
-    String status;
-    String message;
-    T data;
+    // todo: Implement fields
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     LocalDateTime timestamp;
 
@@ -42,11 +40,8 @@ public class ApiResponse<T> {
      * @return A success response containing the data.
      */
     public static <T> ApiResponse<T> success(T data) {
-        return ApiResponse.<T>builder()
-                .status("success")
-                .data(data)
-                .timestamp(LocalDateTime.now())
-                .build();
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -56,10 +51,7 @@ public class ApiResponse<T> {
      * @return An error response with a message.
      */
     public static <T> ApiResponse<T> error(String message) {
-        return ApiResponse.<T>builder()
-                .status("error")
-                .message(message)
-                .timestamp(LocalDateTime.now())
-                .build();
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 }

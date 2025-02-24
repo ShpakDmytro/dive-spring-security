@@ -100,46 +100,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        final String authHeader = request.getHeader("Authorization");
-
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        try {
-            final String jwt = authHeader.substring(7);
-            final String username = jwtService.extractUsername(jwt);
-
-            // Only process if we have a username and no existing authentication
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-
-                if (jwtService.isTokenValid(jwt, userDetails)) {
-                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                            userDetails,
-                            null,
-                            userDetails.getAuthorities()
-                    );
-                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(authToken);
-
-                    // Add helpful debug logging
-                    log.debug("User '{}' successfully authenticated via JWT", username);
-                } else {
-                    log.warn("Invalid JWT token for user: {}", username);
-                }
-            }
-        } catch (ExpiredJwtException e) {
-            log.warn("JWT token has expired: {}", e.getMessage());
-        } catch (MalformedJwtException e) {
-            log.warn("Malformed JWT token: {}", e.getMessage());
-        } catch (SignatureException e) {
-            log.warn("Invalid JWT signature: {}", e.getMessage());
-        } catch (Exception e) {
-            log.error("JWT Authentication error: {}", e.getMessage());
-        }
-
-        filterChain.doFilter(request, response);
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 }

@@ -39,16 +39,7 @@ public record AuthenticationResponse(
             String username,
             JwtProperties jwtProperties) {
 
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime expiration = now.plusNanos(jwtProperties.getExpirationMs() * 1000000);
-
-        return new AuthenticationResponse(
-                token,
-                "Bearer",
-                now,
-                expiration,
-                jwtProperties.getIssuer(),
-                username
-        );
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 }

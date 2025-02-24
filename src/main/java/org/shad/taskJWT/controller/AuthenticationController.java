@@ -86,18 +86,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<AuthenticationResponse>> login(
             @RequestBody AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.username(), request.password())
-        );
-
-        UserDetails userDetails = userDetailsService.loadUserByUsername(request.username());
-        String token = jwtService.generateToken(userDetails);
-        AuthenticationResponse tokenResponse = AuthenticationResponse.fromToken(
-                token,
-                request.username(),
-                jwtProperties
-        );
-
-        return ResponseEntity.ok(ApiResponse.success(tokenResponse));
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 }

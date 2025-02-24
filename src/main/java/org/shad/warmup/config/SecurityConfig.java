@@ -65,25 +65,8 @@ public class SecurityConfig {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(AbstractHttpConfigurer::disable)
-                // Use stateless session management
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // Configure authorization rules
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(ApiConstants.API_BASE + ApiConstants.AUTH+ "/**").permitAll()
-                        .requestMatchers(ApiConstants.API_BASE + ApiConstants.PUBLIC + "/**").permitAll()
-                        .requestMatchers(ApiConstants.API_BASE + ApiConstants.ADMIN + "/**").hasRole("ADMIN")
-                        .anyRequest().authenticated())
-                // Configure exception handling
-                .exceptionHandling(ex -> ex
-                        .authenticationEntryPoint(authenticationEntryPoint)
-                        .accessDeniedHandler(accessDeniedHandler))
-                // Configure HTTP Basic authentication
-                .httpBasic(basic -> basic
-                        .authenticationEntryPoint(authenticationEntryPoint))
-                .build();
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
     /**
      * Provides an in-memory user details service for authentication.
@@ -116,7 +99,8 @@ public class SecurityConfig {
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(12);
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -165,6 +149,7 @@ public class SecurityConfig {
      */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 }
