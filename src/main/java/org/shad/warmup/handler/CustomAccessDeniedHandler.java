@@ -65,12 +65,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                        HttpServletResponse response,
                        AccessDeniedException exception) throws IOException {
 
-        log.error("Access denied error: {}", exception.getMessage());
-
-        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-
-        objectMapper.writeValue(response.getOutputStream(),
-                ApiResponse.error("Access denied: " + exception.getMessage()));
+        // todo: Implement this method
+        throw new UnsupportedOperationException();
     }
 }
