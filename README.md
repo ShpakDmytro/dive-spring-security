@@ -1,8 +1,10 @@
+Clone repository 
+
 Branches:
 main - contains the description of the assignment
 completed - contains solution and the task description with hints
-hard - Who wants to challenge themselves   1. Clone repository 
-
+hard - Who wants to challenge themselves 
+  
 First Dive into Spring Security
 Type:  Warmup[15 min]
 Go to src/main/java/org/shad/warmup/ and implement the TODO methods in the following classes:
